@@ -1,33 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<%- include('../partials/header') %>
+
     <table id="list">
         <thead>
-          <tr>
-            <th>Title</th>
-            <th>Flights</th>
-            <th></th>
-          </tr>
+            <tr>
+                <th>Flights</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-          <% flights.forEach(function(f) { %>
+            <% flights.forEach(function(f) { %>
             <tr>
-              <td><%= f.airline %></td>
-              <td><%= f.airport %></td>
-              <td><%= f.flightNo %></td>
-              <td><%= f.departs %></td>
+                <td><%= f.airline %></td>
+                <td><%= f.airport %></td>
+                <td><%= f.flightNo %></td>
+                <td><%= f.departs %></td>
+                <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
             </tr>
-        <% }); %>
-          </tbody>
-        </table>
-</body>
-</html>
+            <% }); %>
+        </tbody>
+    </table>
 
- <!-- <td><a href="/movies/<%= m._id %>">DETAILS</a></td>
-      </tr>
-      <% }); %> -->
+    <%- include('../partials/footer') %>

@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<p>Please first ensure that the Destination is not in the dropdown
+  <select>
+    <% destinations.forEach(function(d) { %>
+      <option><%= d.location %></option>
+    <% }) %>
+  </select>
+</p>
+<form id="add-destination-form" action="/destinations" method="POST">
+  <label>Destination:</label>
+  <input type="text" location="destination">
+  <input type="submit" value="Add Destination">
+</form>
+
+<%- include('../partials/footer') %>

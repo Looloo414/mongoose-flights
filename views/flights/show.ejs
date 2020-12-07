@@ -10,6 +10,25 @@
     <div>Departure: </div>
     <div><%= flight.departs %></div>
   </section>
+   
+    <div>Destination:</div>
+    <ul>
+      <%- flight.destination.map(p => 
+        `<li>${d.location}</li>`
+      ).join('') %>
+    </ul>
+  </section>
+ 
+  <form id="add-loc-to-destination" action="/flights/<%= flight._id %>/destinations" method="POST">
+    <select location="destinationId">
+      <%- destinations.map(p => 
+        `<option value="${d._id}">${d.location}</option>`
+      ).join('') %>
+    </select>
+    <button type="submit">Add to Destinations</button>
+  </form>
+
+
   <br><br><h2>Tickets</h2>
   <form id="add-ticket" method="POST"
     action="/flights/<%= flight._id %>/tickets">

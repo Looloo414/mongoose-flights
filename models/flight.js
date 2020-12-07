@@ -16,7 +16,8 @@ const flightSchema = new Schema ({
     flightNo: {type: Number, min: 10, max: 9999},
     departs: {
         type: Date,
-        default:() => Date.now() + 365*24*60*60*1000
+        default:() => Date.now() + 365*24*60*60*1000,
+    destinations: [{type: Schema.Types.ObjectId, ref: 'Destination'}]
       },
     tickets: [ticketSchema]
 }, {

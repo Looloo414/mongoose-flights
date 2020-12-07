@@ -9,6 +9,8 @@
 </head>
 <body>
   <nav>
+    <a href="/destinations/new"	<%- airline === 'Add Destination' ? 'class="active"' : '' %>>
+        ADD DESTINATION</a>
     <a href="/flights/new" <%- airline === 'Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
     <a href="/flights" <%- airline === 'All Flights' ? 'class="active"' : '' %>>ALL FLIGHTS</a>
   </nav>

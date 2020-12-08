@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel='stylesheet' href='stylesheets/style.css' />
-  <title><%= airline %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-  <nav>
-    <a href="/destinations/new"	<%- airline === 'Add Destination' ? 'class="active"' : '' %>>
-        ADD DESTINATION</a>
-    <a href="/flights/new" <%- airline === 'Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
-    <a href="/flights" <%- airline === 'All Flights' ? 'class="active"' : '' %>>ALL FLIGHTS</a>
-  </nav>
-  <main>
-    <h1><%= airline %></h1>
+    <nav>
+        <ul>
+            <a href="/">Home</a>
+            <a href="/flights/new">
+                <%- title === 'Add Flight' ? 'class ="active"': '' %>>Add Flight</a>
+            <a href="/flights">
+                <%- title === 'All Flights' ? 'class ="active"': '' %>>All Flights</a>
+            <a href="/destinations/new">
+                <%- title === 'Add destination' ? 'class ="active"': '' %>>Add destination</a>
+        </ul>
+    </nav>
+<main>

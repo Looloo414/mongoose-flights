@@ -1,40 +1,39 @@
-const Flight = require('../models/flight')
-
+const Flight = require('../models/flight');
+const Destination = require('../models/destination');
 module.exports = {
-    index,
-    create,
     new: newFlight,
+    create,
+    index,
+    delete: deleteFlight,
     show
 }
-
-function index(req, res) {
-    Flight.find({}, function(err, flights) {
-        res.render('flights/index', {airline: "All flights", flights: flights})
-    })
-}
-
-function newFlight(req, res) {
-    res.render('flights/new', {airline: "Add Flight", err: ''})
-}
-
-function create(req, res) {
-    for (let key in req.body) {
-        if (req.body[key] === '') delete req.body[key]
-    }
+ function newFlight(req, res) {
+     res.render('flights/new', {title: 'Add new flight', err: ''});
+ };
+ function create(req, res) {
     const flight = new Flight(req.body)
-    flight.save(function(err) {
-        if(err) {
-            console.log(err)
-            return res.render('flights/new', {err: err, airline: 'All Flights'})
-        }
-        console.log(flight)
-        res.redirect('/flights')
+    flight.save(function(err, flight) {
+        res.redirect('/flights') //
     })
 
-}
-
+ };
+ function index(req, res) {
+     Flight.find({}, function(err, flights) {
+         res.render('flights/index', {title: "All flights", flights: flights})
+     })
+ }
+ function deleteFlight(req, res) {
+     console.log('delete', deleteFlight)
+     Flight.findByIdAndDelete(req.params.id, (err, flight) => {
+         res.redirect('/flights')
+     })
+ }
 function show(req, res) {
-    Flight.findById(req.params.id, function(err, flight) {
-        res.render('flights/show', {airline: 'Flight Details', flight})
+    Flight.findById(req.params.id)
+    .populate('destinations').exec((err, flight) => {
+      Destination.find({_id: {$nin: flight.destinations}}, (err, destinations) => {
+          console.log(flight, 'flight console')
+        res.render('flights/show', {title: 'flight Detail', flight, destinations})
+      })
     })
-}
+  }

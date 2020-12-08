@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= airline %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= airline %></h1>
-    <p>Welcome to <%= airline %></p>
-    <a href="/flights/new">New Flight</a><br>
-    <a href="/flights">All Flights</a>
-  </body>
-</html>
+<%- include('./partials/header') %>
+
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    
+<%- include('./partials/footer') %>

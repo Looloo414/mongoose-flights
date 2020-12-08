@@ -11,9 +11,12 @@ module.exports = {
      res.render('flights/new', {title: 'Add new flight', err: ''});
  };
  function create(req, res) {
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key]
+    }
     const flight = new Flight(req.body)
     flight.save(function(err, flight) {
-        res.redirect('/flights') //
+        res.redirect('/flights') 
     })
 
  };
@@ -33,7 +36,7 @@ function show(req, res) {
     .populate('destinations').exec((err, flight) => {
       Destination.find({_id: {$nin: flight.destinations}}, (err, destinations) => {
           console.log(flight, 'flight console')
-        res.render('flights/show', {title: 'flight Detail', flight, destinations})
+        res.render('flights/show', {title: 'Flight Detail', flight, destinations})
       })
     })
   }

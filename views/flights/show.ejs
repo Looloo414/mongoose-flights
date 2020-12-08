@@ -55,6 +55,11 @@
             <td><%= t.createdAt.toLocaleDateString() %></td>
             <td><%= t.seat %></td>
             <td><%= t.price %></td>
+            <td>
+                <form action="/<%= t._id%>/<%= flight._id%>?_method=DELETE" class="delete-form" method='POST'>
+                    <button type= 'submit'>X</button>
+                </form>
+            </td>
           </tr>
         <% }); %>
       </tbody>

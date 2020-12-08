@@ -1,7 +1,7 @@
 const Flight = require('../models/flight')
 module.exports = {
     create,
-    delete: deleteTicket
+    deleteTicket
 }
 function create(req, res) {
     Flight.findById(req.params.id, function(err, flight){
